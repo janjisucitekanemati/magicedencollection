@@ -25,3 +25,15 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
+    - run: |
+        ENDPOINTS=$(cat launchpad.json | jq -r '.[] | "https://api-mainnet.magiceden.dev/v2/collections/" + .symbol + "/stats"') ./main magiceden >.out.json
+        [ $? -eq 0 ] && mv .out.json launchpadStats.json  || rm .out.json
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '*.json'
+    - run: |
+        ENDPOINTS=$(cat collections.json | jq -r '.[] | "https://api-mainnet.magiceden.dev/v2/collections/" + .symbol + "/stats"') ./main magiceden >.out.json
+        [ $? -eq 0 ] && mv .out.json collectionsStats.json  || rm .out.json
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '*.json'
