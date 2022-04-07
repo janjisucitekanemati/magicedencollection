@@ -9,6 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - run: |
         curl -LJO https://github.com/nftkitten/nftkitten-cli/raw/main/main
         chmod +x ./main
