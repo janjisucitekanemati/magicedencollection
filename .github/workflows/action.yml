@@ -26,7 +26,7 @@ jobs:
       with:
         file_pattern: '*.json'
     - run: |
-        C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat launchpad.json | jq -r '.[] | "\$C/" + .symbol + "/stats"') ./main magiceden >.out.json
+        C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat launchpad.json | jq -r '.[] | "$C/" + .symbol + "/stats"') ./main magiceden >.out.json
         [ $? -eq 0 ] && mv .out.json launchpadStats.json  || rm .out.json
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
