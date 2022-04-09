@@ -9,7 +9,7 @@
 
 # MagicEden.io RPC
 
-_(I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR)_
+_(I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR))_
 
 [JSON RPC Specification](https://www.jsonrpc.org/specification)
 
