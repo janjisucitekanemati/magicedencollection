@@ -7,7 +7,9 @@
 
 [MagicEden Smart Contract v2](https://solscan.io/account/M2mx93ekt1fmXSVkTrUL9xVFHkmME8HTUi5Cyc5aF7K)
 
-# MagicEden.io RPC (I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR)
+# MagicEden.io RPC
+
+_(I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR)_
 
 [JSON RPC Specification](https://www.jsonrpc.org/specification)
 
