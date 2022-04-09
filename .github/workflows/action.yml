@@ -2,7 +2,7 @@ name: Fetch from upstreams
 
 on:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -16,24 +16,28 @@ jobs:
     - run: |
         ENDPOINTS=https://api-mainnet.magiceden.dev/v2/launchpad/collections LIMIT=500 ./main magiceden >.out.json
         [ $? -eq 0 ] && mv .out.json launchpad.json  || rm .out.json
+        git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
     - run: |
         ENDPOINTS=https://api-mainnet.magiceden.dev/v2/collections LIMIT=500 ./main magiceden >.out.json
         [ $? -eq 0 ] && mv .out.json collections.json  || rm .out.json
+        git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
     - run: |
         C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat launchpad.json | jq -r '.[] | "$C/" + .symbol + "/stats"') ./main magiceden >.out.json
         [ $? -eq 0 ] && mv .out.json launchpadStats.json  || rm .out.json
+        git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
     - run: |
         C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat collections.json | jq -r '.[] | "$C/" + .symbol + "/stats"') ./main magiceden >.out.json
         [ $? -eq 0 ] && mv .out.json collectionsStats.json  || rm .out.json
+        git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
