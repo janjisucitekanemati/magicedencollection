@@ -2,9 +2,17 @@
 
 [https://api.magiceden.dev/](https://api.magiceden.dev/)
 
-# MagicEden.io RPC
+# MagicEden.io RPC (I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR)
 
 [JSON RPC Specification](https://www.jsonrpc.org/specification)
+
+[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)
+
+### Tested operators
+- [$match](https://www.mongodb.com/docs/manual/reference/operator/aggregation/match/)
+- [$skip](https://www.mongodb.com/docs/manual/reference/operator/aggregation/skip/)
+- [$sort](https://www.mongodb.com/docs/manual/reference/operator/aggregation/sort/)
+- [$limit](https://www.mongodb.com/docs/manual/reference/operator/aggregation/limit/)
 
 ## Get Listed NFTs By Query
 
@@ -21,7 +29,7 @@
 | Name | Value |
 |:---|:---|
 |nowait|true/false|
-|q|{"$match":{"collectionSymbol":"cops_game"},"$sort":{"createdAt":-1},"$skip":0,"$limit":20}|
+|q|[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)|
 
 ### Request examples**
 
@@ -104,7 +112,7 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getListedNFTsByQuery?q=%7B%22
 | Name | Value |
 |:---|:---|
 |nowait|true/false|
-|q|{"$match":{"$or":[{"seller_address":"4cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e"},{"buyer_address":"4cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e"}]},"$sort":{"blockTime":-1},"$skip":0}|
+|q|[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)|
 
 ### Request examples**
 
@@ -187,7 +195,7 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getActivitiesByQuery?q=%7B%22
 |:---|:---|
 |nowait|true/false|
 |edge_cache|true/false|
-|symbols|[":symbolName"]|
+|symbols|["collection symbol"]|
 
 ### Request examples**
 
@@ -254,25 +262,654 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getCollectionsWithSymbols?sym
 
 ---
 
-to be continue
-https://api-mainnet.magiceden.dev/rpc/getBiddingsByQuery?q={%22$match%22:{%22initializerDepositTokenMintAccount%22:{%22$in%22:[mintTokens]}},%22$sort%22:{%22createdAt%22:-1}}
+## Get Biddings By Query
 
-https://api-mainnet.magiceden.dev/rpc/getNFTByMintAddress
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getBiddingsByQuery`
 
-https://api-mainnet.magiceden.dev/rpc/getNFTsByOwner/:wallet
+**Method** : `GET`
 
-https://api-mainnet.magiceden.dev/rpc/getNFTStatsByMintAddress/:mintaddress
+**Public** : NO
 
-https://api-mainnet.magiceden.dev/rpc/getGlobalActivitiesByQuery{"$match":{"collection_symbol":"stoned_ape_crew"},"$sort":{"blockTime":-1,"createdAt":-1},"$skip":0}
+**Auth required** : NO
 
-https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/space_runners
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|nowait|true/false|
+|q|[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.io/rpc/getBiddingsByQuery?q={%22%24match%22%3A{%22escrowPubkey%22%3A%22GfhyX9SCkqN5YfQSHvczMxhAFbECiYKHCeHHjL2LbbY5%22}%2C%22%24sort%22%3A{%22createdAt%22%3A-1}}", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+[]
+```
+
+---
+
+## Get NFT By Mint Address
+
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getNFTByMintAddress`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|nowait|true/false|
+|q|[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.io/rpc/getNFTByMintAddress/FAFt1f1ZV26jYJ4MrshkMfMuy9aJoXMasRfK97eijX4C", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "cross-site",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+	"results": {
+		"id": "7mm29BxEdXLptr7XNDDVZbh1E4w13qE25xgwxVw5wZBW",
+		"price": 0,
+		"owner": "Axc2owCWv1cExF6CcDt52J2eGVnkv3DgiZWxSuXoomDk",
+		"img": "https://www.arweave.net/tcdhTpZT_LghNn3f2VUI32w0MfmOGj3yQsuvIoaqHUk?ext=PNG",
+		"title": "Girl In The Blue Hat",
+		"content": "Girl In The Blue Hat  Sharon Tatem 1992 South Beach Collection Oil on Panel. South Beach may have been  falling to pieces, but all I saw was the most beautiful architecture I had ever seen.  I could not get enough.  So I brought the visions home and painted the color hat South Beach Art Deco Series.  I honestly do not remember the order but all 4 will be in this collection. \n\nBuyer is purchasing a high resolution clean image and the value is that I will be posting all my 600+ fine art paintings.  I am the hardest working fine artist and will not give up until all my paintings are NFT's \n\nEnjoy!\nSincerely \nSharon Tatem\n\nThe purchaser will receive the high resolution image clean from all watermarks.  The image is printable.\nAs a Fine Artist I will be dropping new NFTs on a Daily from the very large collection of fine art I have created over 35 years.  Please enjoy the NFT's and feel free to comment to me.\n",
+		"propertyCategory": "image",
+		"creators": [
+			{
+				"address": "FwUR3LNN9H4MHrJYxCnxeT4yfFfvBUjBPoHvR3SojaQr",
+				"verified": 1,
+				"share": 100
+			}
+		],
+		"sellerFeeBasisPoints": 2000,
+		"mintAddress": "FAFt1f1ZV26jYJ4MrshkMfMuy9aJoXMasRfK97eijX4C",
+		"attributes": [
+			{
+				"trait_type": "South Beach",
+				"value": "Art"
+			},
+			{
+				"trait_type": "Sharon Tatem ",
+				"value": "South Beach Artist"
+			}
+		],
+		"properties": {
+			"files": [
+				{
+					"uri": "https://www.arweave.net/KT-FEBIXNlZl_RGGzPlZvQNf6hBnwBUkWsN5WcfnFgE?ext=PNG",
+					"type": "image/png"
+				}
+			],
+			"category": "image",
+			"creators": [
+				{
+					"address": "FwUR3LNN9H4MHrJYxCnxeT4yfFfvBUjBPoHvR3SojaQr",
+					"verified": true,
+					"share": 100
+				}
+			]
+		},
+		"supply": 1,
+		"updateAuthority": "FwUR3LNN9H4MHrJYxCnxeT4yfFfvBUjBPoHvR3SojaQr",
+		"primarySaleHappened": 0,
+		"onChainCollection": {},
+		"tokenDelegateValid": false
+	}
+}
+```
+
+---
+
+## Get Collection Escrow Stats
+
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/:symbol`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|:symbol|collection symbol|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/magicticket", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+	"results": {
+		"symbol": "magicticket",
+		"enabledAttributesFilters": true,
+		"availableAttributes": [
+			{
+				"count": 1026,
+				"floor": 179000000,
+				"attribute": {
+					"trait_type": "Level",
+					"value": 1
+				}
+			},
+			{
+				"count": 282,
+				"floor": 468000000,
+				"attribute": {
+					"trait_type": "Level",
+					"value": 2
+				}
+			},
+			{
+				"count": 194,
+				"floor": 1400000000,
+				"attribute": {
+					"trait_type": "Level",
+					"value": 3
+				}
+			},
+			{
+				"count": 1026,
+				"floor": 179000000,
+				"attribute": {
+					"trait_type": "Tier",
+					"value": "Normie"
+				}
+			},
+			{
+				"count": 282,
+				"floor": 468000000,
+				"attribute": {
+					"trait_type": "Tier",
+					"value": "Degen"
+				}
+			},
+			{
+				"count": 194,
+				"floor": 1400000000,
+				"attribute": {
+					"trait_type": "Tier",
+					"value": "OG"
+				}
+			}
+		],
+		"floorPrice": 179000000,
+		"listedCount": 1634,
+		"listedTotalValue": 32090254081780,
+		"avgPrice24hr": 376218800,
+		"volume24hr": 37621880000,
+		"volumeAll": 31739450989608
+	}
+}
+```
+
+---
+
+## Get NFT By Owner
+
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getNFTsByOwner/:token_mint`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|:token_mint|mint address|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.dev/rpc/getNFTsByOwner/F6ZVwoX7Z1Ec81AJFGHyTciJUCumnkPetRWA6SHqpMko", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+	"results": [
+		{
+			"id": "3WLSu9sLFwajYEqrWXWLQoaf6Q5WhCAQm8dDjVdQyRg9",
+			"price": 0,
+			"owner": "F6ZVwoX7Z1Ec81AJFGHyTciJUCumnkPetRWA6SHqpMko",
+			"collectionName": "solana_bored_folks",
+			"collectionTitle": "Solana Bored Folks",
+			"img": "https://www.arweave.net/wUbfDT80cGERTAqLf3AEof0HTrCfUA3ZVM42Ol1e6j4?ext=png",
+			"title": "SOLANA BORED FOLKS #154",
+			"content": "333 UNIQUE BORED FOLKS",
+			"propertyCategory": "image",
+			"creators": [
+				{
+					"address": "MTrrWxZh4bGsE2MESFnNiypp7HZrn8xRyBWd3So9z7L",
+					"verified": 1,
+					"share": 0
+				},
+				{
+					"address": "3qYAf6BCXsao7gCHton8BUmibEZY6dUKxLNJ9juYeHg2",
+					"verified": 0,
+					"share": 100
+				}
+			],
+			"sellerFeeBasisPoints": 700,
+			"mintAddress": "HneES7wZge7R5QmnLcYYK8oCBPgG9p8wwm77CqdmSqY2",
+			"attributes": [
+				{
+					"trait_type": "BCKGROUND",
+					"value": "MUD"
+				},
+				{
+					"trait_type": "BODY",
+					"value": "GRAY"
+				},
+				{
+					"trait_type": "EYES",
+					"value": "SQUARE GLASSES"
+				},
+				{
+					"trait_type": "FACE",
+					"value": "NONE"
+				},
+				{
+					"trait_type": "HAT",
+					"value": "PLANETS"
+				},
+				{
+					"trait_type": "PIPE",
+					"value": "LONG"
+				}
+			],
+			"properties": {
+				"files": [
+					{
+						"uri": "https://www.arweave.net/wUbfDT80cGERTAqLf3AEof0HTrCfUA3ZVM42Ol1e6j4?ext=png",
+						"type": "image/png"
+					}
+				],
+				"category": "image",
+				"creators": [
+					{
+						"address": "3qYAf6BCXsao7gCHton8BUmibEZY6dUKxLNJ9juYeHg2",
+						"share": 100
+					}
+				]
+			},
+			"supply": 1,
+			"updateAuthority": "3qYAf6BCXsao7gCHton8BUmibEZY6dUKxLNJ9juYeHg2",
+			"primarySaleHappened": 1,
+			"onChainCollection": {},
+			"tokenDelegateValid": false
+		}
+	]
+}
+```
+
+---
+
+## Get NFT Stats By MintAddress
+
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getNFTStatsByMintAddress/:token_mint`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|:token_mint|mint address|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.io/rpc/getNFTStatsByMintAddress/FpqUMSWghvdJhdVm9DBCTfgQB7S4FqrbGV3v9N7rnz1c", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "cross-site",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+	"results": {
+		"_id": "625132a3fa13153687681997",
+		"mintAddress": "FpqUMSWghvdJhdVm9DBCTfgQB7S4FqrbGV3v9N7rnz1c",
+		"collectionSymbol": "fly",
+		"attrs": [
+			{
+				"trait_type": "Expression",
+				"value": "I Wish",
+				"valueCount": 88
+			},
+			{
+				"trait_type": "Jacket",
+				"value": "Quarter Zip Green",
+				"valueCount": 34
+			},
+			{
+				"trait_type": "Hat",
+				"value": "Bell Boy Red",
+				"valueCount": 34
+			},
+			{
+				"trait_type": "Head",
+				"value": "Cracked Mask Green Pink Mustard",
+				"valueCount": 59
+			},
+			{
+				"trait_type": "Background",
+				"value": "Chalk Board",
+				"valueCount": 48
+			}
+		],
+		"totalMints": 888,
+		"rarityA": 16.88212927756654,
+		"rankA": 266
+	}
+}
+```
+
+---
+
+## Get Global Activities By Query
+
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getGlobalActivitiesByQuery`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|nowait|true/false|
+|q|[MongoDB Aggregation Operators](https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/)|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.dev/rpc/getGlobalActivitiesByQuery?q={%22$match%22:{%22collection_symbol%22:%22stoned_ape_crew%22},%22$sort%22:{%22blockTime%22:-1,%22createdAt%22:-1},%22$skip%22:0}", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+	"results": [
+		{
+			"_id": "625136ba95f92c7e1d6df043",
+			"transaction_id": "4hJX8898UEbHVkSABjy2jYcZEVGnhsFKrpVQgxfDhQnB784qTNkttkFncMGBFEZo7FP7F5Rw4FxVLEgwsgeGKkBT",
+			"txType": "initializeEscrow",
+			"blockTime": 1649489591,
+			"buyer_address": null,
+			"collection_symbol": "stoned_ape_crew",
+			"createdAt": "2022-04-09T07:33:14.776Z",
+			"mint": "EAeKJrqnDKH2ghuD7trmYrgiwqhRez7Ft3SDPkiNUdf4",
+			"notifiable": true,
+			"onChainCollectionAddress": null,
+			"parsedList": {
+				"TxType": "initializeEscrow",
+				"seller_address": "9xvdQiZC2pXfbkmyko9pBYML4xveGrXQwniJJiR8c4Nm",
+				"token_address": "EAeKJrqnDKH2ghuD7trmYrgiwqhRez7Ft3SDPkiNUdf4",
+				"amount": 200000000000,
+				"collection_symbol": "stoned_ape_crew",
+				"mint": "EAeKJrqnDKH2ghuD7trmYrgiwqhRez7Ft3SDPkiNUdf4"
+			},
+			"seller_address": "9xvdQiZC2pXfbkmyko9pBYML4xveGrXQwniJJiR8c4Nm",
+			"slot": 128906507,
+			"source": "magiceden_v2",
+			"step": 0,
+			"totalSteps": 1,
+			"txName": "sell",
+			"mintObject": {
+				"mintAddress": "EAeKJrqnDKH2ghuD7trmYrgiwqhRez7Ft3SDPkiNUdf4",
+				"img": "https://www.arweave.net/DQqcV-2Btk_l00Nzdoa77FEHy1Efc_sdtZqwFCRh-yg?ext=png",
+				"supply": 1,
+				"title": "Stoned Ape #3333",
+				"content": "4200 Stoned Apes Form The Genesis Collection In The Crew With 4 Roles, Allowing Staking For Daily Rewards Of Our Utility Token $PUFF, An NFT Evolution Process With Token Burning Mechanics And More Dope Real World Utility. More Than Just Your Typical PFP Project.",
+				"attributes": [
+					{
+						"trait_type": "Role",
+						"value": "Farmer"
+					},
+					{
+						"trait_type": "Background",
+						"value": "Light Solana Gradient"
+					},
+					{
+						"trait_type": "Eyes",
+						"value": "Red"
+					},
+					{
+						"trait_type": "Eyes Items",
+						"value": "Big Solana Glasses"
+					},
+					{
+						"trait_type": "Form",
+						"value": "Leopard"
+					},
+					{
+						"trait_type": "Hats",
+						"value": "Grey Headphones"
+					},
+					{
+						"trait_type": "Mouth",
+						"value": "Sad"
+					},
+					{
+						"trait_type": "Hair",
+						"value": "Long Wavy Leo"
+					},
+					{
+						"trait_type": "Hand with Items",
+						"value": "Watering Can Leo Fur"
+					},
+					{
+						"trait_type": "Random Things",
+						"value": "Cannabis Plant"
+					},
+					{
+						"trait_type": "Upper Part",
+						"value": "SAC Shirt"
+					},
+					{
+						"trait_type": "Genesis Role?",
+						"value": "Yes"
+					}
+				],
+				"updateAuthority": "PUFFgnKKhQ23vp8uSPwdzrUhEr7WpLmjM85NB1FQgpb",
+				"primarySaleHappened": 1,
+				"sellerFeeBasisPoints": 742,
+				"creators": [
+					{
+						"address": "7RCBr3ZQ8yhY4jHpFFo3Kmh7MnaCPi1bFuUgXUB9WURf",
+						"verified": 1,
+						"share": 0
+					},
+					{
+						"address": "PUFFgnKKhQ23vp8uSPwdzrUhEr7WpLmjM85NB1FQgpb",
+						"verified": 0,
+						"share": 100
+					}
+				],
+				"propertyCategory": "image",
+				"properties": {
+					"files": [
+						{
+							"uri": "https://www.arweave.net/DQqcV-2Btk_l00Nzdoa77FEHy1Efc_sdtZqwFCRh-yg?ext=png",
+							"type": "image/png"
+						}
+					],
+					"category": "image",
+					"creators": [
+						{
+							"address": "PUFFgnKKhQ23vp8uSPwdzrUhEr7WpLmjM85NB1FQgpb",
+							"share": 100
+						}
+					]
+				},
+				"onChainName": "Stoned Ape #3333"
+			}
+		}
+	]
+}
+```
+
+---
 
 
 # MagicEden.io Undocumented API
 
 ## Featured Carousels
 
-**URL** : `https://api-mainnet.magiceden.io/featured_carousels`
+**URL** : `https://api-mainnet.magiceden.dev/featured_carousels`
 
 **Method** : `GET`
 
@@ -289,7 +926,7 @@ https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/space_runners
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/featured_carousels?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/featured_carousels?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -332,7 +969,7 @@ await fetch("https://api-mainnet.magiceden.io/featured_carousels?edge_cache=true
 
 ## Featured Collections Carousels
 
-**URL** : `https://api-mainnet.magiceden.io/featured_collections_carousels`
+**URL** : `https://api-mainnet.magiceden.dev/featured_collections_carousels`
 
 **Method** : `GET`
 
@@ -349,7 +986,7 @@ await fetch("https://api-mainnet.magiceden.io/featured_carousels?edge_cache=true
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/featured_collections_carousels?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/featured_collections_carousels?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -391,7 +1028,7 @@ await fetch("https://api-mainnet.magiceden.io/featured_collections_carousels?edg
 
 ## Popular Collections
 
-**URL** : `https://api-mainnet.magiceden.io/popular_collections`
+**URL** : `https://api-mainnet.magiceden.dev/popular_collections`
 
 **Method** : `GET`
 
@@ -410,7 +1047,7 @@ await fetch("https://api-mainnet.magiceden.io/featured_collections_carousels?edg
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/popular_collections?timeRange=1d&edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/popular_collections?timeRange=1d&edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -478,7 +1115,7 @@ await fetch("https://api-mainnet.magiceden.io/popular_collections?timeRange=1d&e
 
 ## Drops
 
-**URL** : `https://api-mainnet.magiceden.io/drops`
+**URL** : `https://api-mainnet.magiceden.dev/drops`
 
 **Method** : `GET`
 
@@ -496,7 +1133,7 @@ await fetch("https://api-mainnet.magiceden.io/popular_collections?timeRange=1d&e
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/drops?edge_cache=true&top=10", {
+await fetch("https://api-mainnet.magiceden.dev/drops?edge_cache=true&top=10", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -545,7 +1182,7 @@ await fetch("https://api-mainnet.magiceden.io/drops?edge_cache=true&top=10", {
 
 ## Auctions
 
-**URL** : `https://api-mainnet.magiceden.io/auctions`
+**URL** : `https://api-mainnet.magiceden.dev/auctions`
 
 **Method** : `GET`
 
@@ -562,7 +1199,7 @@ await fetch("https://api-mainnet.magiceden.io/drops?edge_cache=true&top=10", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/auctions?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/auctions?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -630,7 +1267,7 @@ await fetch("https://api-mainnet.magiceden.io/auctions?edge_cache=true", {
 
 ## Highest Sold NFTs
 
-**URL** : `https://api-mainnet.magiceden.io/highest_sold_nfts`
+**URL** : `https://api-mainnet.magiceden.dev/highest_sold_nfts`
 
 **Method** : `GET`
 
@@ -648,7 +1285,7 @@ await fetch("https://api-mainnet.magiceden.io/auctions?edge_cache=true", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/highest_sold_nfts?more=true&edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/highest_sold_nfts?more=true&edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -755,7 +1392,7 @@ await fetch("https://api-mainnet.magiceden.io/highest_sold_nfts?more=true&edge_c
 
 ## New Collections
 
-**URL** : `https://api-mainnet.magiceden.io/new_collections`
+**URL** : `https://api-mainnet.magiceden.dev/new_collections`
 
 **Method** : `GET`
 
@@ -773,7 +1410,7 @@ await fetch("https://api-mainnet.magiceden.io/highest_sold_nfts?more=true&edge_c
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/new_collections?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/new_collections?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -828,7 +1465,7 @@ await fetch("https://api-mainnet.magiceden.io/new_collections?edge_cache=true", 
 
 ## Volumes
 
-**URL** : `https://api-mainnet.magiceden.io/volumes`
+**URL** : `https://api-mainnet.magiceden.dev/volumes`
 
 **Method** : `GET`
 
@@ -845,7 +1482,7 @@ await fetch("https://api-mainnet.magiceden.io/new_collections?edge_cache=true", 
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/volumes?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/volumes?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -882,7 +1519,7 @@ await fetch("https://api-mainnet.magiceden.io/volumes?edge_cache=true", {
 
 ## Volumes
 
-**URL** : `https://api-mainnet.magiceden.io/globalWarning`
+**URL** : `https://api-mainnet.magiceden.dev/globalWarning`
 
 **Method** : `GET`
 
@@ -893,7 +1530,7 @@ await fetch("https://api-mainnet.magiceden.io/volumes?edge_cache=true", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/globalWarning", {
+await fetch("https://api-mainnet.magiceden.dev/globalWarning", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -933,7 +1570,7 @@ await fetch("https://api-mainnet.magiceden.io/globalWarning", {
 
 ## All Collections With Escrow Data
 
-**URL** : `https://api-mainnet.magiceden.io/all_collections_with_escrow_data`
+**URL** : `https://api-mainnet.magiceden.dev/all_collections_with_escrow_data`
 
 **Method** : `GET`
 
@@ -950,7 +1587,7 @@ await fetch("https://api-mainnet.magiceden.io/globalWarning", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/all_collections_with_escrow_data?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/all_collections_with_escrow_data?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1006,7 +1643,7 @@ await fetch("https://api-mainnet.magiceden.io/all_collections_with_escrow_data?e
 
 ## All Organizations
 
-**URL** : `https://api-mainnet.magiceden.io/all_organizations`
+**URL** : `https://api-mainnet.magiceden.dev/all_organizations`
 
 **Method** : `GET`
 
@@ -1023,7 +1660,7 @@ await fetch("https://api-mainnet.magiceden.io/all_collections_with_escrow_data?e
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/all_organizations?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/all_organizations?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1069,7 +1706,7 @@ await fetch("https://api-mainnet.magiceden.io/all_organizations?edge_cache=true"
 
 ## Launchpad Collections
 
-**URL** : `https://api-mainnet.magiceden.io/launchpad_collections`
+**URL** : `https://api-mainnet.magiceden.dev/launchpad_collections`
 
 **Method** : `GET`
 
@@ -1086,7 +1723,7 @@ await fetch("https://api-mainnet.magiceden.io/all_organizations?edge_cache=true"
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/launchpad_collections?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1139,7 +1776,7 @@ await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=t
 
 ## Launchpad Collections
 
-**URL** : `https://api-mainnet.magiceden.io/launchpad_collections`
+**URL** : `https://api-mainnet.magiceden.dev/launchpad_collections`
 
 **Method** : `GET`
 
@@ -1156,7 +1793,7 @@ await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=t
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/launchpad_collections?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1209,7 +1846,7 @@ await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=t
 
 ## New Games
 
-**URL** : `https://api-mainnet.magiceden.io/new_games`
+**URL** : `https://api-mainnet.magiceden.dev/new_games`
 
 **Method** : `GET`
 
@@ -1226,7 +1863,7 @@ await fetch("https://api-mainnet.magiceden.io/launchpad_collections?edge_cache=t
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/new_games?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/new_games?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1285,7 +1922,7 @@ await fetch("https://api-mainnet.magiceden.io/new_games?edge_cache=true", {
 
 ## Popular Games
 
-**URL** : `https://api-mainnet.magiceden.io/popular_games`
+**URL** : `https://api-mainnet.magiceden.dev/popular_games`
 
 **Method** : `GET`
 
@@ -1302,7 +1939,7 @@ await fetch("https://api-mainnet.magiceden.io/new_games?edge_cache=true", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/popular_games?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/popular_games?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1365,7 +2002,7 @@ await fetch("https://api-mainnet.magiceden.io/popular_games?edge_cache=true", {
 
 ## Get Aggregated Collection Metrics
 
-**URL** : `https://api-mainnet.magiceden.io/getAggregatedCollectionMetrics`
+**URL** : `https://api-mainnet.magiceden.dev/getAggregatedCollectionMetrics`
 
 **Method** : `GET`
 
@@ -1383,7 +2020,7 @@ await fetch("https://api-mainnet.magiceden.io/popular_games?edge_cache=true", {
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics?timeframe=1d&edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getAggregatedCollectionMetrics?timeframe=1d&edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -1450,7 +2087,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics
 
 ## Get Aggregated Marketplace Metrics
 
-**URL** : `https://api-mainnet.magiceden.io/getAggregatedMarketplaceMetrics`
+**URL** : `https://api-mainnet.magiceden.dev/getAggregatedMarketplaceMetrics`
 
 **Method** : `GET`
 
@@ -1468,7 +2105,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getAggregatedMarketplaceMetrics?edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getAggregatedMarketplaceMetrics?edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
