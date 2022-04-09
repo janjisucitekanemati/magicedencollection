@@ -2,6 +2,10 @@
 
 [https://api.magiceden.dev/](https://api.magiceden.dev/)
 
+
+[MagicEden Smart Contract v1](https://solscan.io/account/MEisE1HzehtrDpAAT8PnLHjpSSkRYakotTuJRPjTpo8)
+[MagicEden Smart Contract v2](https://solscan.io/account/M2mx93ekt1fmXSVkTrUL9xVFHkmME8HTUi5Cyc5aF7K)
+
 # MagicEden.io RPC (I got most of the endpoints from the PieterSpruijt in [Solmate discord channel](https://discord.gg/QuMxkRAR)
 
 [JSON RPC Specification](https://www.jsonrpc.org/specification)
@@ -2151,6 +2155,58 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getAggregatedMarketplaceMetri
       }
     }
   ]
+}
+```
+
+---
+
+## Check User Watch Collection
+
+**URL** : `https://api-mainnet.magiceden.dev/collection_watchlists/action/checkUserWatchCollection/:symbol`
+
+**Method** : `GET`
+
+**Public** : NO
+
+**Auth required** : NO
+
+### Query Parameters
+
+| Name | Value |
+|:---|:---|
+|edge_cache|true/false|
+|:symbol|collection symbol|
+
+### Request examples**
+
+```js
+await fetch("https://api-mainnet.magiceden.dev/collection_watchlists/action/checkUserWatchCollection/degods?walletAddress=9gHuet9vB9o9La7P8Tbse9XdVUatZ5xeKvL9FthiE2cG", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-GB,en;q=0.5",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "cross-site",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache"
+    },
+    "method": "GET",
+    "mode": "cors"
+});
+```
+
+### Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+    "watching": false
 }
 ```
 
