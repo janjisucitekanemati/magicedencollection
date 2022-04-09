@@ -289,7 +289,7 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getCollectionsWithSymbols?sym
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getBiddingsByQuery?q={%22%24match%22%3A{%22escrowPubkey%22%3A%22GfhyX9SCkqN5YfQSHvczMxhAFbECiYKHCeHHjL2LbbY5%22}%2C%22%24sort%22%3A{%22createdAt%22%3A-1}}", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getBiddingsByQuery?q={%22%24match%22%3A{%22escrowPubkey%22%3A%22GfhyX9SCkqN5YfQSHvczMxhAFbECiYKHCeHHjL2LbbY5%22}%2C%22%24sort%22%3A{%22createdAt%22%3A-1}}", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -340,7 +340,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getBiddingsByQuery?q={%22%24ma
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getNFTByMintAddress/FAFt1f1ZV26jYJ4MrshkMfMuy9aJoXMasRfK97eijX4C", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getNFTByMintAddress/FAFt1f1ZV26jYJ4MrshkMfMuy9aJoXMasRfK97eijX4C", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -675,7 +675,7 @@ await fetch("https://api-mainnet.magiceden.dev/rpc/getNFTsByOwner/F6ZVwoX7Z1Ec81
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getNFTStatsByMintAddress/FpqUMSWghvdJhdVm9DBCTfgQB7S4FqrbGV3v9N7rnz1c", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getNFTStatsByMintAddress/FpqUMSWghvdJhdVm9DBCTfgQB7S4FqrbGV3v9N7rnz1c", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -2196,6 +2196,7 @@ await fetch("https://api-mainnet.magiceden.dev/collection_watchlists/action/chec
         "Pragma": "no-cache",
         "Cache-Control": "no-cache"
     },
+    "referrer": "https://magiceden.io/",
     "method": "GET",
     "mode": "cors"
 });
