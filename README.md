@@ -6,6 +6,8 @@
 
 ## Get Listed NFTs By Query
 
+[JSON RPC Specification](https://www.jsonrpc.org/specification)
+
 **URL** : `https://api-mainnet.magiceden.io/getListedNFTsByQuery`
 
 **Method** : `GET`
