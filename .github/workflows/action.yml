@@ -25,3 +25,21 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
+    - run: |
+        curl -LJ0o collectionMetrics1d.json --compressed 'https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics?timeframe=1d&edge_cache=true' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers'
+        git pull --no-commit origin
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '*.json'
+    - run: |
+        curl -LJ0o collectionMetrics7d.json --compressed 'https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics?timeframe=7d&edge_cache=true' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers'
+        git pull --no-commit origin
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '*.json'
+    - run: |
+        curl -LJ0o collectionMetrics30d.json --compressed 'https://api-mainnet.magiceden.io/rpc/getAggregatedCollectionMetrics?timeframe=30d&edge_cache=true' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers'
+        git pull --no-commit origin
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: '*.json'
