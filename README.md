@@ -4,9 +4,9 @@
 
 # MagicEden.io RPC
 
-## Get Listed NFTs By Query
-
 [JSON RPC Specification](https://www.jsonrpc.org/specification)
+
+## Get Listed NFTs By Query
 
 **URL** : `https://api-mainnet.magiceden.io/getListedNFTsByQuery`
 
