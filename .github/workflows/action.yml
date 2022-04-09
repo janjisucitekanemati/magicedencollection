@@ -14,29 +14,14 @@ jobs:
         curl -LJO https://github.com/nftkitten/nftkitten-cli/raw/main/main
         chmod +x ./main
     - run: |
-        ENDPOINTS=https://api-mainnet.magiceden.dev/v2/launchpad/collections LIMIT=500 ./main magiceden >.out.json
-        [ $? -eq 0 ] && mv .out.json launchpad.json  || rm .out.json
+        curl -LJ0o all_collections_with_escrow_data.json 'https://api-mainnet.magiceden.dev/all_collections_with_escrow_data?edge_cache=true' -X OPTIONS -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br' -H 'Access-Control-Request-Method: GET' -H 'Access-Control-Request-Headers: cache-control,pragma,user-agent' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: cross-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache'
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         file_pattern: '*.json'
     - run: |
-        ENDPOINTS=https://api-mainnet.magiceden.dev/v2/collections LIMIT=500 ./main magiceden >.out.json
+        curl -LJ0o drops.json 'https://api-mainnet.magiceden.dev/drops?edge_cache=true' -X OPTIONS -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br' -H 'Access-Control-Request-Method: GET' -H 'Access-Control-Request-Headers: cache-control,pragma,user-agent' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: cross-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache'
         [ $? -eq 0 ] && mv .out.json collections.json  || rm .out.json
-        git pull --no-commit origin
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        file_pattern: '*.json'
-    - run: |
-        C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat launchpad.json | jq -r '.[] | "$C/" + .symbol + "/stats"') ./main magiceden >.out.json
-        [ $? -eq 0 ] && mv .out.json launchpadStats.json  || rm .out.json
-        git pull --no-commit origin
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        file_pattern: '*.json'
-    - run: |
-        C=https://api-mainnet.magiceden.dev/v2/collections ENDPOINTS=$(cat collections.json | jq -r '.[] | "$C/" + .symbol + "/stats"') ./main magiceden >.out.json
-        [ $? -eq 0 ] && mv .out.json collectionsStats.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
