@@ -8,7 +8,7 @@
 
 ## Get Listed NFTs By Query
 
-**URL** : `https://api-mainnet.magiceden.io/getListedNFTsByQuery`
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getListedNFTsByQuery`
 
 **Method** : `GET`
 
@@ -26,7 +26,7 @@
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getListedNFTsByQuery?q=%7B%22%24match%22%3A%7B%22collectionSymbol%22%3A%22cops_game%22%7D%2C%22%24sort%22%3A%7B%22createdAt%22%3A-1%7D%2C%22%24skip%22%3A0%2C%22%24limit%22%3A20%7D", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getListedNFTsByQuery?q=%7B%22%24match%22%3A%7B%22collectionSymbol%22%3A%22cops_game%22%7D%2C%22%24sort%22%3A%7B%22createdAt%22%3A-1%7D%2C%22%24skip%22%3A0%2C%22%24limit%22%3A20%7D", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -91,7 +91,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getListedNFTsByQuery?q=%7B%22%
 
 ## Get Activities By Query
 
-**URL** : `https://api-mainnet.magiceden.io/getActivitiesByQuery`
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getActivitiesByQuery`
 
 **Method** : `GET`
 
@@ -109,7 +109,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getListedNFTsByQuery?q=%7B%22%
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getActivitiesByQuery?q=%7B%22%24match%22%3A%7B%22%24or%22%3A%5B%7B%22seller_address%22%3A%224cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e%22%7D%2C%7B%22buyer_address%22%3A%224cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e%22%7D%5D%7D%2C%22%24sort%22%3A%7B%22blockTime%22%3A-1%7D%2C%22%24skip%22%3A0%7D", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getActivitiesByQuery?q=%7B%22%24match%22%3A%7B%22%24or%22%3A%5B%7B%22seller_address%22%3A%224cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e%22%7D%2C%7B%22buyer_address%22%3A%224cnM34f2HNAeKPy71pRvPA3gFDMJZKCDH1aYJEKVk19e%22%7D%5D%7D%2C%22%24sort%22%3A%7B%22blockTime%22%3A-1%7D%2C%22%24skip%22%3A0%7D", {
     "credentials": "include",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -173,7 +173,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getActivitiesByQuery?q=%7B%22%
 
 ## Get Collections With Symbols
 
-**URL** : `https://api-mainnet.magiceden.io/getCollectionsWithSymbols`
+**URL** : `https://api-mainnet.magiceden.dev/rpc/getCollectionsWithSymbols`
 
 **Method** : `GET`
 
@@ -192,7 +192,7 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getActivitiesByQuery?q=%7B%22%
 ### Request examples**
 
 ```js
-await fetch("https://api-mainnet.magiceden.io/rpc/getCollectionsWithSymbols?symbols=%5B%22solana_monkey_business%22%5D&edge_cache=true", {
+await fetch("https://api-mainnet.magiceden.dev/rpc/getCollectionsWithSymbols?symbols=%5B%22solana_monkey_business%22%5D&edge_cache=true", {
     "credentials": "omit",
     "headers": {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
@@ -255,12 +255,17 @@ await fetch("https://api-mainnet.magiceden.io/rpc/getCollectionsWithSymbols?symb
 ---
 
 to be continue
-https://api-mainnet.magiceden.io/rpc/getBiddingsByQuery?q={%22$match%22:{%22initializerDepositTokenMintAccount%22:{%22$in%22:[mintTokens]}},%22$sort%22:{%22createdAt%22:-1}}
-https://api-mainnet.magiceden.io/rpc/getNFTByMintAddress
-https://api-mainnet.magiceden.io/rpc/getNFTsByOwner/:wallet
-https://api-mainnet.magiceden.io/rpc/getNFTStatsByMintAddress/:mintaddress
-https://api-mainnet.magiceden.io/rpc/getGlobalActivitiesByQuery{"$match":{"collection_symbol":"stoned_ape_crew"},"$sort":{"blockTime":-1,"createdAt":-1},"$skip":0}
-https://api-mainnet.magiceden.io/rpc/getCollectionEscrowStats/space_runners
+https://api-mainnet.magiceden.dev/rpc/getBiddingsByQuery?q={%22$match%22:{%22initializerDepositTokenMintAccount%22:{%22$in%22:[mintTokens]}},%22$sort%22:{%22createdAt%22:-1}}
+
+https://api-mainnet.magiceden.dev/rpc/getNFTByMintAddress
+
+https://api-mainnet.magiceden.dev/rpc/getNFTsByOwner/:wallet
+
+https://api-mainnet.magiceden.dev/rpc/getNFTStatsByMintAddress/:mintaddress
+
+https://api-mainnet.magiceden.dev/rpc/getGlobalActivitiesByQuery{"$match":{"collection_symbol":"stoned_ape_crew"},"$sort":{"blockTime":-1,"createdAt":-1},"$skip":0}
+
+https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/space_runners
 
 
 # MagicEden.io Undocumented API
