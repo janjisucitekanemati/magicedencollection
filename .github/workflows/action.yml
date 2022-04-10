@@ -94,7 +94,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'; \
-           && [ -s 'c/'$(dirname $i)'/.out.json' ] && mv 'c/'$(dirname $i)'/.out.json' 'c/'$(dirname $i)'/_.json' && \
+           [ -s 'c/'$(dirname $i)'/.out.json' ] && mv 'c/'$(dirname $i)'/.out.json' 'c/'$(dirname $i)'/_.json' && \
           touch 'c/'$i && ls -d 'c/'$(dirname $i)'/'* | grep -v 'c/'$(dirname $i)'/_.json' | grep -v 'c/'$i | \
           xargs rm -rf || rm 'c/'$(dirname $i)'/.out.json'; done
         find . -name '.out.json' -exec rm -rf {} \;
