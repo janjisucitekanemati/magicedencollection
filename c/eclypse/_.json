@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"eclypse","enabledAttributesFilters":true,"availableAttributes":[{"count":32,"floor":3590000000,"attribute":{"trait_type":"Subscription type","value":"Renewal"}},{"count":5,"floor":9990000000,"attribute":{"trait_type":"Subscription type","value":"Lifetime"}}],"floorPrice":3590000000,"listedCount":37,"listedTotalValue":412598000000,"avgPrice24hr":5923333333.333333,"volume24hr":17770000000,"volumeAll":1990926200000}}
