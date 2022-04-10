@@ -2,7 +2,7 @@ name: Fetch from upstreams
 
 on:
   schedule:
-    - cron: "25,55 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'
-        [ $? -eq 0 ] && mv .out.json collections.json  || rm .out.json
+        [ $? -eq 0 ] && [ -s .out.json ] && mv .out.json collections.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -36,7 +36,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'
-        [ $? -eq 0 ] && mv .out.json drops.json  || rm .out.json
+        [ $? -eq 0 ] && [ -s .out.json ] && mv .out.json drops.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -50,7 +50,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'
-        [ $? -eq 0 ] && mv .out.json collectionMetrics1d.json  || rm .out.json
+        [ $? -eq 0 ] && [ -s .out.json ] && mv .out.json collectionMetrics1d.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -64,7 +64,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'
-        [ $? -eq 0 ] && mv .out.json collectionMetrics7d.json  || rm .out.json
+        [ $? -eq 0 ] && [ -s .out.json ] && mv .out.json collectionMetrics7d.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -78,7 +78,7 @@ jobs:
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
           -H 'Cache-Control: no-cache' -H 'TE: trailers'
-        [ $? -eq 0 ] && mv .out.json collectionMetrics30d.json  || rm .out.json
+        [ $? -eq 0 ] && [ -s .out.json ] && mv .out.json collectionMetrics30d.json  || rm .out.json
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -93,10 +93,10 @@ jobs:
           -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' \
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
-          -H 'Cache-Control: no-cache' -H 'TE: trailers' && \
-          mv 'c/'$(dirname $i)'/.out.json' 'c/'$(dirname $i)'/_.json' && \
+          -H 'Cache-Control: no-cache' -H 'TE: trailers'; \
+           && [ -s 'c/'$(dirname $i)'/.out.json' ] && mv 'c/'$(dirname $i)'/.out.json' 'c/'$(dirname $i)'/_.json' && \
           touch 'c/'$i && ls -d 'c/'$(dirname $i)'/'* | grep -v 'c/'$(dirname $i)'/_.json' | grep -v 'c/'$i | \
-          xargs rm -rf; done
+          xargs rm -rf || rm 'c/'$(dirname $i)'/.out.json'; done
         find . -name '.out.json' -exec rm -rf {} \;
         find . -name '_.json' -size 0 -exec rm -rf {} \;
         git pull --no-commit origin
