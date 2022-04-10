@@ -52,6 +52,7 @@ jobs:
         function list() { cat collections.json | jq -r '.collections[] | .symbol + "/_" + .updatedAt + ".json"' }
         function filter() { while read i; do [ -f $i ] || echo $i; done }
         for i in $(list | filter | head -100); do mkdir -p $(dirname $i) && curl -m 30 -LJ0o .out.json --compressed 'https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/'$(dirname $i)'?timeframe=1d&edge_cache=true' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' -H 'Cache-Control: no-cache' -H 'TE: trailers' && mv .out.json $(dirname $i)'/_.json' && touch $i; done
+    - run: |
         find . -name '.out.json' -exec rm -rf {} \\;
         find . -name '_.json' -size 0 -exec rm -rf {} \\;
         git pull --no-commit origin
