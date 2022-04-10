@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"blowy","enabledAttributesFilters":true,"availableAttributes":[{"count":5,"floor":50000000,"attribute":{"trait_type":"Pourcentage","value":"50%"}},{"count":4,"floor":89000000,"attribute":{"trait_type":"Pourcentage","value":"25%"}},{"count":2,"floor":500000000,"attribute":{"trait_type":"Pourcentage","value":"100%"}}],"floorPrice":50000000,"listedCount":11,"listedTotalValue":2479000000,"volumeAll":4929527110}}
