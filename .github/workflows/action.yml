@@ -2,7 +2,7 @@ name: Fetch from upstreams
 
 on:
   schedule:
-    - cron: "5,20,35,50 * * * *"
+    - cron: "8,23,38,53 * * * *"
   workflow_dispatch:
 
 jobs:
