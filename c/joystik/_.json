@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"joystik","enabledAttributesFilters":true,"availableAttributes":[{"count":89,"floor":270000000,"attribute":{"trait_type":"Card Type","value":"Tier 1"}},{"count":32,"floor":900000000,"attribute":{"trait_type":"Card Type","value":"Tier 2"}},{"count":5,"floor":10000000000,"attribute":{"trait_type":"Card Type","value":"Tier 3"}}],"floorPrice":270000000,"listedCount":138,"listedTotalValue":1369779900000,"avgPrice24hr":255800000,"volume24hr":1279000000,"volumeAll":888689495642}}
