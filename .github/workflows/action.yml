@@ -85,7 +85,7 @@ jobs:
         file_pattern: '*.json'
     - run: |
         for i in $(cat collections.json | jq -r '.collections[] | .symbol + "/_" + .updatedAt + ".json"' | \
-          while read i; do [ -f $i ] || echo $i; done | head -100); \
+          while read i; do [ -f $i ] || echo $i; done | head -100000); \
           do mkdir -p 'c/'$(dirname $i) && curl -m 45 -LJ0o 'c/'$(dirname $i)'/.out.json' --compressed \
           'https://api-mainnet.magiceden.dev/rpc/getCollectionEscrowStats/'$(dirname $i)'?edge_cache=true' \
           -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0' \
