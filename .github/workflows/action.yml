@@ -101,5 +101,3 @@ jobs:
         find . -name '_.json' -size 0 -exec rm -rf {} \;
         git pull --no-commit origin
     - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        file_pattern: '*.json'
