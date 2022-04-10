@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"diamond_kingdom","enabledAttributesFilters":true,"availableAttributes":[{"count":10,"floor":200000000,"attribute":{"trait_type":"Tier","value":"Noble"}},{"count":3,"floor":990000000,"attribute":{"trait_type":"Tier","value":"Lord"}},{"count":1,"floor":10000000000,"attribute":{"trait_type":"Tier","value":"Council"}}],"floorPrice":200000000,"listedCount":15,"listedTotalValue":50580000000,"avgPrice24hr":325000000,"volume24hr":650000000,"volumeAll":5211000000}}

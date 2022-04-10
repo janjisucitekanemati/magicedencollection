@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"launch_pass","enabledAttributesFilters":true,"availableAttributes":[{"count":289,"floor":10000000,"attribute":{"trait_type":"Destination","value":"The Moon"}},{"count":289,"floor":10000000,"attribute":{"trait_type":"Pass Name","value":"Launch Pass"}}],"floorPrice":10000000,"listedCount":289,"listedTotalValue":1213077387590000,"volumeAll":50098379880}}

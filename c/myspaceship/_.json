@@ -1,1 +1,1 @@
-You have exceeded the requests in 1 min limit! Please try again soon.
+{"results":{"symbol":"myspaceship","enabledAttributesFilters":true,"availableAttributes":[{"count":1,"floor":1200000000,"attribute":{"trait_type":"sphere","value":"yellow"}},{"count":1,"floor":1200000000,"attribute":{"trait_type":"stripes","value":"green"}}],"floorPrice":1000000000,"listedCount":3,"listedTotalValue":3200000000,"avgPrice24hr":null,"volume24hr":null,"volumeAll":26780664200}}
