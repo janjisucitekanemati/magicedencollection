@@ -93,8 +93,9 @@ jobs:
           -H 'Accept-Encoding: gzip, deflate' -H 'Referer: https://magiceden.io/' \
           -H 'Origin: https://magiceden.io' -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Sec-Fetch-Dest: empty' \
           -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-site' -H 'Pragma: no-cache' \
-          -H 'Cache-Control: no-cache' -H 'TE: trailers' && mv $(dirname $i)'/.out.json' $(dirname $i)'/_.json' && \
-          touch $i && ls -d $(dirname $i)'/'* | grep -v $(dirname $i)'/_.json' | grep -v $i | \
+          -H 'Cache-Control: no-cache' -H 'TE: trailers' && \
+          mv 'c/'$(dirname $i)'/.out.json' 'c/'$(dirname $i)'/_.json' && \
+          touch 'c/'$i && ls -d 'c/'$(dirname $i)'/'* | grep -v 'c/'$(dirname $i)'/_.json' | grep -v 'c/'$i | \
           xargs rm -rf; done
         find . -name '.out.json' -exec rm -rf {} \;
         find . -name '_.json' -size 0 -exec rm -rf {} \;
